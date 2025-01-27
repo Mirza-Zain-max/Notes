@@ -37,7 +37,7 @@ const Login = () => {
                 localStorage.setItem('user-login', true)
                 localStorage.setItem('user-uid', user.uid)
                 message.success("User is Successfully  Login ")
-                navigate('/todos/add')
+                navigate('/')
             })
             .catch((user) => {
                 message.error("This Account Can't Register")

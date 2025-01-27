@@ -1,0 +1,23 @@
+#root {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+main.todos {
+    background: linear-gradient(to right, #0484bb, #203a43, #2c5364);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+
+    .card {
+        background-color: #f8f9fa82;
+        filter: blur(0.1px);
+    }
+}

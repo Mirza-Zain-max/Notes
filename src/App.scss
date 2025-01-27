@@ -1,8 +1,10 @@
 @import './sass/bootstrap';
 @import "./Sass/navHeader";
 @import "./Sass/screenloader";
+@import "./Sass/auth";
+@import"./Sass/todos";
 
-
+$dark: #00d9ff;
 
 #root{
     display: flex;

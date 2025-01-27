@@ -11,15 +11,14 @@ const Index = () => {
   const { isAuth } = useAuthContext()
   return (
     <>
-        <Routes>
-          <Route path="/*" element={<MyDashBoard />} />
-          {/* <Route path='/auth/*' element={<Auth />}> */}
-          <Route path='/auth/*' element={!isAuth ? <Auth /> : <Navigate to="/" />}>
-            <Route path='login' element={<Login />} />
-            <Route path='register' element={<Register />} />
-            <Route path='forgot' element={<Forgot />} />
-          </Route>
-        </Routes>
+      <Routes>
+        <Route path="/*" element={<MyDashBoard />} />
+        <Route path='/auth/*' element={!isAuth ? <Auth /> : <Navigate to="/" />}>
+          <Route path='login' element={<Login />} />
+          <Route path='register' element={<Register />} />
+          <Route path='forgot' element={<Forgot />} />
+        </Route>
+      </Routes>
     </>
   );
 };

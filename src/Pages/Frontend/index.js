@@ -2,8 +2,9 @@ import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 import MyTodos from './Todos/MyTodos'
 import Add from './Todos/Add'
-import Profile from './Todos/Profile'
+// import Profile from './Todos/Profile'
 import NavHeader from 'Components/NavHeader/NavHeader'
+import About from './About/About'
 
 
 
@@ -15,7 +16,8 @@ const MyDashBoard = () => {
       <Routes>
        <Route path='/' element={<Add />} />
         <Route path='/todos/myTodos' element={<MyTodos />} />
-        <Route path='/todos/profile' element={<Profile />} />
+        <Route path='/about' element={<About />} />
+        {/* <Route path='/todos/profile' element={<Profile />} /> */}
       </Routes>
        </main>
     </>

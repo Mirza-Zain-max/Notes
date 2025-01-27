@@ -39,10 +39,10 @@ function ScrollHandler() {
 const NavHeader = () => {
     const { Title } = Typography
     const navItems = [
-        { name: 'Home', path: "/" },
+        { name: 'Add Notes', path: "/" },
         // { name: 'Blog', path: "/pages/blog" },
-        { name: 'Profile Update', path: "/todos/profile" },
         { name: 'My Notes', path: "/todos/myTodos" },
+        { name: 'About', path: "/about" },
     ]
 
     const [activeId, setActiveId] = useState(null);
@@ -59,7 +59,7 @@ const NavHeader = () => {
     return (
         <>
             <ScrollHandler />
-            <Navbar expand="lg"  className={`main_nav   px-sm-4 px-3 py-2`} id="navbar">
+            <Navbar expand="lg"  className={`main_nav bg-dark px-sm-4 px-3 py-2`} id="navbar">
                 <Container fluid="xxl" className='px-sm-3  px-0 ' >
                     <Navbar.Brand className='max-w-[176px]' >
                         <NavLink to='/' style={{ textDecoration: "none" }}  >
@@ -78,7 +78,7 @@ const NavHeader = () => {
                             </>
                             : <>
                                 <Dropdown.Item as={"div"}>
-                                    <Link className='ms-4 nav-link  text-dark' to="/todos/add">My Notes</Link>
+                                    <Link className='ms-4 nav-link  text-dark' to="/todos/myTodos">My Notes</Link>
                                 </Dropdown.Item>
                                 <Dropdown.Item as={"div"}>
                                     <Link className='ms-4 nav-link  text-dark' onClick={handleLogout} >Logout</Link>
