@@ -26,16 +26,18 @@ const MyTodos = () => {
           id: doc.id,
           ...doc.data(),
         }));
+
         const sharedTodosQuery = query(collection(fireStore, 'todos'), where('sharedNotes', 'array-contains', user.email));
         const sharedTodosSnapshot = await getDocs(sharedTodosQuery);
         const sharedTodos = sharedTodosSnapshot.docs.map((doc) => ({
           id: doc.id,
           ...doc.data(),
         }));
+
         const allTodos = [...userTodos, ...sharedTodos].filter((todo, index, self) => index === self.findIndex((t) => t.id === todo.id));
         setTodos(allTodos);
       } catch (error) {
-        // message.error('Failed to fetch Notes. Try again!');
+        message.error('Failed to fetch Notes. Try again!');
       }
     };
     fetchTodos();
@@ -100,32 +102,30 @@ const MyTodos = () => {
                   </Title>
                   <p><strong>Subject:</strong> {todo.subject}</p>
                   <p><strong>Description:</strong> {todo.description}</p>
-                  {todo.uid === user.uid && (
-                    <>
-                      <abbr title="Edit Notes">
-                        <Button type="primary" className='bg-success' onClick={() => { setCurrentTodo(todo); setIsEditModalVisible(true); form.setFieldsValue(todo); }} style={{ marginTop: '10px', marginRight: '10px' }}>
-                          <EditOutlined />
+                  <>
+                    <abbr title="Edit Notes">
+                      <Button type="primary" className='bg-success' onClick={() => { setCurrentTodo(todo); setIsEditModalVisible(true); form.setFieldsValue(todo); }} style={{ marginTop: '10px', marginRight: '10px' }}>
+                        <EditOutlined />
+                      </Button>
+                    </abbr>
+                    <Popconfirm
+                      title="Are you sure to delete this notes?"
+                      onConfirm={() => handleDelete(todo.id)}
+                      okText="Yes"
+                      cancelText="No"
+                    >
+                      <abbr title="Delete Notes">
+                        <Button type="danger" className='bg-danger text-light' style={{ marginTop: '10px', marginRight: '10px' }}>
+                          <DeleteOutlined />
                         </Button>
                       </abbr>
-                      <Popconfirm
-                        title="Are you sure to delete this notes?"
-                        onConfirm={() => handleDelete(todo.id)}
-                        okText="Yes"
-                        cancelText="No"
-                      >
-                        <abbr title="Delete Notes">
-                          <Button type="danger" className='bg-danger text-light' style={{ marginTop: '10px', marginRight: '10px' }}>
-                            <DeleteOutlined />
-                          </Button>
-                        </abbr>
-                      </Popconfirm>
-                      <abbr title="Share Notes">
-                        <Button type="primary" className='bg-warning' onClick={() => { setCurrentTodo(todo); setIsShareModalVisible(true); }} style={{ marginTop: '10px' }}>
-                          <ShareAltOutlined />
-                        </Button>
-                      </abbr>
-                    </>
-                  )}
+                    </Popconfirm>
+                    <abbr title="Share Notes">
+                      <Button type="primary" className='bg-warning' onClick={() => { setCurrentTodo(todo); setIsShareModalVisible(true); }} style={{ marginTop: '10px' }}>
+                        <ShareAltOutlined />
+                      </Button>
+                    </abbr>
+                  </>
                 </Card>
               </Col>
             ))}
