@@ -6,20 +6,18 @@ import Add from './Todos/Add'
 import NavHeader from 'Components/NavHeader/NavHeader'
 import About from './About/About'
 
-
-
 const MyDashBoard = () => {
   return (
     <>
-    <NavHeader/>
-       <main >
-      <Routes>
-       <Route path='/' element={<Add />} />
-        <Route path='/todos/myTodos' element={<MyTodos />} />
-        <Route path='/about' element={<About />} />
-        {/* <Route path='/todos/profile' element={<Profile />} /> */}
-      </Routes>
-       </main>
+      <NavHeader />
+      <main >
+        <Routes>
+          <Route path='/' element={<Add />} />
+          <Route path='/todos/myTodos' element={<MyTodos />} />
+          <Route path='/about' element={<About />} />
+          {/* <Route path='/todos/profile' element={<Profile />} /> */}
+        </Routes>
+      </main>
     </>
   )
 }

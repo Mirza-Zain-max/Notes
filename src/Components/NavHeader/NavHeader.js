@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { Navbar, Nav, Container, Offcanvas, Image, NavDropdown, Dropdown } from 'react-bootstrap'
-
+import { Navbar, Nav, Container, Offcanvas,  NavDropdown, Dropdown } from 'react-bootstrap'
 import { Menu } from 'react-feather';
 import { Link, NavLink } from 'react-router-dom';
 import {  Typography } from 'antd';
@@ -59,7 +58,7 @@ const NavHeader = () => {
     return (
         <>
             <ScrollHandler />
-            <Navbar expand="lg"  className={`main_nav bg-dark px-sm-4 px-3 py-2`} id="navbar">
+            <Navbar expand="lg" fixed='top' className={`main_nav  px-sm-4 px-3 py-2`} id="navbar">
                 <Container fluid="xxl" className='px-sm-3  px-0 ' >
                     <Navbar.Brand className='max-w-[176px]' >
                         <NavLink to='/' style={{ textDecoration: "none" }}  >

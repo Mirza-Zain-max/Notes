@@ -16,16 +16,12 @@ const Add = () => {
   const navigate = useNavigate();
 
   const handleInputChange = (e) => { const { name, value } = e.target; setFormState({ ...formState, [name]: value }); };
-
   const generateRandomId = () => { return '_' + Math.random().toString(36).substr(2, 9); };
-
   const handleSubmit = async (e) => {
     e.preventDefault(); const { title, subject, description } = formState;
-
     if (title.trim().length < 3) {
       return message.error('Please enter a valid title.');
     }
-
     const newNote = { id: generateRandomId(), uid: user.uid, title: title.trim(), subject: subject.trim(), description: description.trim(), createdAt: serverTimestamp(), sharedNotes: [user.uid], };
     setIsProcessing(true);
     try {
@@ -34,7 +30,6 @@ const Add = () => {
       setFormState({ title: '', subject: '', description: '' });
     } catch (error) {
       message.error('Failed to add note. Try again!');
-
     }
     finally {
       setIsProcessing(false);
@@ -42,7 +37,7 @@ const Add = () => {
   };
 
   return (
-    <main style={{ height: '100vh' }} className="todos d-flex justify-content-center align-items-center">
+    <main style={{ height: '100vh' ,marginTop: 70 }} className="todos  d-flex justify-content-center align-items-center">
       <Container>
         <Row className="justify-content-center">
           <Col span={12}>
@@ -56,20 +51,20 @@ const Add = () => {
                   <Input name="subject" placeholder="Subject" value={formState.subject} onChange={handleInputChange} />
                 </Form.Item>
                 <Form.Item label="Description" required>
-                  <TextArea  name="description" placeholder="Description" value={formState.description} onChange={handleInputChange} style={{ minHeight: "100px", resize: "none" }} />
+                  <TextArea name="description" placeholder="Description" value={formState.description} onChange={handleInputChange} style={{ minHeight: "100px", resize: "none" }} />
                 </Form.Item>
                 <Row >
                   <Col className='justify-content-between d-flex' span={24}>
                     <Button
                       type="primary"
                       size="large" className='w-50 me-2'
-                      loading={isProcessing || undefined} 
+                      loading={isProcessing || undefined}
                       onClick={handleSubmit}
-                      style={{backgroundColor:"#2C3E50", border: "none"}}
+                      style={{ backgroundColor: "#2C3E50", border: "none" }}
                     >
                       Save Notes
                     </Button>
-                    <Button type="primary" size="large" className='w-50' style={{backgroundColor:"#19547b", border: "none"}} onClick={() => navigate("/todos/myTodos")}>
+                    <Button type="primary" size="large" className='w-50' style={{ backgroundColor: "#19547b", border: "none" }} onClick={() => navigate("/todos/myTodos")}>
                       View Notes
                     </Button>
                   </Col>

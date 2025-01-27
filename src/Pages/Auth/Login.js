@@ -5,32 +5,17 @@ import { signInWithEmailAndPassword } from 'firebase/auth'
 import { auth } from '../../Config/fireBase'
 import { Link, useNavigate } from 'react-router-dom'
 import { Fade } from 'react-awesome-reveal'
-// import { Link } from 'react-router-dom'
-
 
 const Login = () => {
     const navigate = useNavigate()
-
     const initialState = { email: "", password: "" }
-
     const [state, setState] = useState(initialState)
-
     const [isProcessing, setIsProcessing] = useState(false)
-
-    // const [fullName, setFullName] = useState("")
-    // const [email, setEmail] = useState("")
-    // const [password, setPassword] = useState("")
-    // const [confirmPassword, setConfirmPassword] = useState("")
-
     const handleChange = e => setState({ ...state, [e.target.name]: e.target.value })
-
     const handleSubmit = e => {
         e.preventDefault();
-
         let { email, password } = state
-
         setIsProcessing(true)
-
         signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 const user = userCredential.user;
@@ -49,7 +34,7 @@ const Login = () => {
 
     return (
         <main className='auth p-3 p-md-4 p-lg-5'>
-            <Fade  cascade damping={0.1}>
+            <Fade cascade damping={0.1}>
                 <Container>
                     <div className="card p-3 p-md-4 p-lg-4">
                         <Form layout="vertical">
